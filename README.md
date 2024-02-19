@@ -3,20 +3,15 @@
 
 This repository contains the necessary files and configurations to deploy a multipage Python Streamlit application on AWS ECS (Elastic Container Service).
 
-## Directory Structure
-
-The directory structure:
-
-
-'''
-
-Certainly! Here's the README information consolidated into a single markdown page:
-
-markdown
-Copy code
 # AWS ECS Deployment for Multipage Python Streamlit Application
 
-This repository contains the necessary files and configurations to deploy a multipage Python Streamlit application on AWS ECS (Elastic Container Service).
+This repository contains the necessary files and configurations to deploy a multipage Python Streamlit application on AWS ECS (Elastic Container Service). 
+The project has the following components:
+
+1. Python streamlit app files
+2. Cloudformation teamplates for ECS Cluster creation
+3. Docker files and instructions to create an ECR repository
+
 
 ## Directory Structure
 
