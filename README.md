@@ -17,7 +17,8 @@ The project has the following components:
 
 The project follows the following directory structure:
 
-'''
+```
+
 │   README.md
 │
 ├───app
@@ -36,10 +37,10 @@ The project follows the following directory structure:
         parent.yml
         vpc.yml
 
-'''
+```
 
 
-The structure cana slo be written as follows
+The structure can aslo be written as follows
 
 -- app/
 | |-- Dockerfile
