@@ -19,7 +19,7 @@ The project follows the following directory structure:
 
 ```
 
-│   README.md
+│___README.md
 │
 ├───app
 │   │   Dockerfile
@@ -40,20 +40,6 @@ The project follows the following directory structure:
 ```
 
 
-The structure can aslo be written as follows
-
-|- app/
-| |-- Dockerfile
-| |-- streamlit_app/
-| |-- init.py
-| |-- page1.py
-| |-- page2.py
-| |-- requirements.txt
-|-- cloudformation/
-| |-- ecs-cluster.yaml
-| |-- ecs-service.yaml
-|-- .gitignore
-|-- README.md
 
 
 
