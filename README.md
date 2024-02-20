@@ -42,7 +42,7 @@ The project follows the following directory structure:
 
 The structure can aslo be written as follows
 
--- app/
+|- app/
 | |-- Dockerfile
 | |-- streamlit_app/
 | |-- init.py
