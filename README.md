@@ -19,27 +19,40 @@ The project follows the following directory structure:
 
 ```
 
-│___README.md
-│
-├───app
-│   │   Dockerfile
-│   │   main.py
-│   │   requirements.txt
-│   │
-│   └───pages
-│           1_📈_Plotting_Demo.py
-│           2_🌍_Mapping_Demo.py
-│           3_📊_DataFrame_Demo.py
-│
-└───cloudformation
-        cluster.yml
-        mp-streamlit.yml
-        parent.yml
-        vpc.yml
+└───streamlit-ecs-demo
+    │   README.md
+    │
+    ├───app
+    │   │   Dockerfile
+    │   │   main.py
+    │   │   requirements.txt
+    │   │
+    │   └───pages
+    │           1_📈_Plotting_Demo.py
+    │           2_🌍_Mapping_Demo.py
+    │           3_📊_DataFrame_Demo.py
+    │
+    └───cloudformation
+            cluster.yml
+            mp-streamlit.yml
+            parent.yml
+            vpc.yml
+
 
 ```
 
 
+### Python Streamlit code
 
+Streamlit is a python library similar to RShiny in R or D3js in Javascript. It provides the ability to provide a simple front-end with minimal code and is popular among Data Science projects. The demo code used here was obtained from [Streamlit Multipage Demo](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app) and can be found in the folder [app](./app)
+
+The [Dockerfile](./app/Dockerfile) is used to create the Docket image which is updated to the ECR repo (or DockerHub)
+
+Steps on creating the ECR repo can be found in [ECR Repo Instructions](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
+
+
+### Cloudformation for hosting the service on ECS Cluster
+
+The cloudformation templates to create the ECS cluster and associated services are included in the [cloudformation folder](./cloudformation)
 
 
