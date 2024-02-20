@@ -17,7 +17,31 @@ The project has the following components:
 
 The project follows the following directory structure:
 
-|-- app/
+'''
+│   README.md
+│
+├───app
+│   │   Dockerfile
+│   │   main.py
+│   │   requirements.txt
+│   │
+│   └───pages
+│           1_📈_Plotting_Demo.py
+│           2_🌍_Mapping_Demo.py
+│           3_📊_DataFrame_Demo.py
+│
+└───cloudformation
+        cluster.yml
+        mp-streamlit.yml
+        parent.yml
+        vpc.yml
+
+'''
+
+
+The structure cana slo be written as follows
+
+-- app/
 | |-- Dockerfile
 | |-- streamlit_app/
 | |-- init.py
@@ -30,4 +54,5 @@ The project follows the following directory structure:
 |-- .gitignore
 |-- README.md
 
-'''
+
+
