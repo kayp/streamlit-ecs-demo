@@ -44,15 +44,61 @@ The project follows the following directory structure:
 
 ### Python Streamlit code
 
-Streamlit is a python library similar to RShiny in R or D3js in Javascript. It provides the ability to provide a simple front-end with minimal code and is popular among Data Science projects. The demo code used here was obtained from [Streamlit Multipage Demo](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app) and can be found in the folder [app](./app)
+Streamlit is a Python library that simplifies the creation of interactive web applications, similar to RShiny in R or D3.js in JavaScript. It is particularly popular in Data Science projects due to its ease of use and minimal code requirements. The demo code featured in this repository is adapted from the [Streamlit Multipage Demo](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app) and can be found in the [app](./app) folder.
 
-The [Dockerfile](./app/Dockerfile) is used to create the Docket image which is updated to the ECR repo (or DockerHub)
 
-Steps on creating the ECR repo can be found in [ECR Repo Instructions](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
 
+## Docker Image
+
+The [Dockerfile](./app/Dockerfile) included in the repository is used to build the Docker image. Once built, the image can be pushed to an Elastic Container Registry (ECR) or DockerHub.
+
+### ECR Repository Setup
+
+To set up the ECR repository, follow the steps outlined in the [ECR Repo Instructions](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html). Here is a summary of the steps, assuming the region is `us-east-1`:
+
+
+```bash
+# Create an ECR Repo (e.g., mp-slt)
+aws ecr create-repository --repository-name mp-slt
+
+# Obtain login credentials for ECR
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin {YourAccountNumber}.dkr.ecr.us-east-1.amazonaws.com
+
+# Build and tag the Docker image
+docker build -t mp-slt .
+docker tag mp-slt:latest {YourAccountNumber}.dkr.ecr.us-east-1.amazonaws.com/mp-slt:latest
+
+# Push the Docker image to ECR
+docker push {YourAccountNumber}.dkr.ecr.us-east-1.amazonaws.com/mp-slt:latest
+```
 
 ### Cloudformation for hosting the service on ECS Cluster
 
 The cloudformation templates to create the ECS cluster and associated services are included in the [cloudformation folder](./cloudformation)
 
+1. vpc.yml - Creates VPC
+2. cluster.yml - Creates ECS CLuster
+3. mp-streamlit.yml - Creates the ECS Service, task, load balancer, target group and related resources to host the Streamlit app container
+4. parent.yml - Deploys above stacks usind AWS SAM CLI 
 
+### Deployment of cloudformation stacks
+Cloudformation stacks are deployed by [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+
+The following command was used.
+
+```
+
+sam deploy   --template-file parent.yml --stack-name ecs-multipage-streamlit --resolve-s3 --capabilities CAPABILITY_IAM --profile {ProfileName} --region {AWS Region -us-east-1 in this case}
+
+```
+
+### Destroy resources
+
+ECR Repo can be deleted from the console. The CLoudformation template console can be used to delete resources for created from SAM CLI. ALternatively, this ccan be accomplished by the following command:
+
+```
+
+sam delete --stack-name ecs-multipage-streamlit  --profile kpaws02 --region us-east-1
+
+
+```
