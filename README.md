@@ -12,6 +12,12 @@ The project has the following components:
 2. Cloudformation teamplates for ECS Cluster creation
 3. Docker files and instructions to create an ECR repository
 
+## Prerequisites
+1. [An AWS account with sufficient permissions](https://aws.amazon.com/resources/create-account/)
+2. [Installed Docker engine](https://docs.docker.com/engine/install/)
+3. [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/)
+4. [AWS Serverless Application Model (SAM) CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+
 
 ## Directory Structure
 
@@ -92,7 +98,7 @@ sam deploy   --template-file parent.yml --stack-name ecs-multipage-streamlit --r
 
 ```
 
-### Destroy resources
+### Delete resources
 
 ECR Repo can be deleted from the console. The CLoudformation template console can be used to delete resources for created from SAM CLI. ALternatively, this ccan be accomplished by the following command:
 
